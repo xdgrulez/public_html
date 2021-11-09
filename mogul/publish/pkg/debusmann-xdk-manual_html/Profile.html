@@ -1,0 +1,154 @@
+<html lang="en">
+<head>
+<title>Profile - Manual of the XDG Development Kit</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Manual of the XDG Development Kit">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Debug.html#Debug" title="Debug">
+<link rel="next" href="Directories.html#Directories" title="Directories">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Profile"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Directories.html#Directories">Directories</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Debug.html#Debug">Debug</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">12 Profile</h2>
+
+<p>In this chapter, we explain how grammars can be profiled. Because the
+XDK solver is a constraint solver, XDG profiling amounts to profiling
+a constraint satisfaction problem (CSP) in terms of constraint
+programming. To this end, the XDK provides the means to count the
+number of constraint variables and the number of propagators
+introduced for a particular CSP, which corresponds to a particular
+&ldquo;parse&rdquo;.
+
+   <p>Let us proceed with an example. Please start the GUI of the XDK
+(<code>xdk.exe</code>) and open the grammar file <code>Grammars/Acl01.ul</code>. 
+Now, the XDK provides us with two different profile operations:
+     <ol type=1 start=1>
+<li>profile grammar (independent of the input string)
+(menu <code>Extras/Profile grammar...</code>)
+<li>profile sentence (depends on the input string)
+(menu <code>Extras/Profile sentence...</code>)
+        </ol>
+In short, the first operation counts the number of constraint
+variables the grammar introduces for each node in an analysis, but
+neither takes the principle constraint functors nor the input string
+into account. The second operation does take the input string and the
+principle constraint functors into account and counts the exact number
+of constraint variables and propagators introduced for a particular
+input string.
+
+<h3 class="section">12.1 Profile grammar</h3>
+
+<p>Let us try this out. Choose <code>Extras/Profile grammar...</code>  first. 
+This leads to the Inspector printing out the constraint variables
+(<code>fd</code>: finite domain, <code>fs</code>: finite set, <code>fdfs</code> sum of
+<code>fd</code> and <code>fs</code>) which the grammar introduces for each node in
+an analysis. The printout is an Oz pair of two records:
+     <ol type=1 start=1>
+<li>The first
+record has the features <code>attrs</code>, <code>entry</code>, <code>label</code>,
+<code>model</code> and <code>node</code>. The <code>attrs</code> feature harbors the
+constraint variable counts for the node attributes of the individual
+dimensions of the grammar and a combined count over all
+dimensions. The <code>entry</code> feature harbors the counts for the
+lexical attributes, <code>model</code> for the constraint variables
+introduced by the model record of the principles used in the grammar,
+and <code>node</code> the additional constraint variables introduced by the
+XDK solver (this is hard-wired into the solver). <code>label</code> gives an
+additional count of the edge labels introduced for the individual
+dimensions. 
+<li>The second record has the features <code>entries</code>,
+<code>fd</code>, <code>fdfs</code> and <code>fs</code>. The <code>entries</code> feature is a
+count of the number of lexical entries in the grammar, <code>fd</code> is
+the sum of the <code>fd</code> counts of the first record, <code>fs</code> of the
+<code>fs</code> counts, and <code>fdfs</code> of the <code>fdfs</code> counts.  The
+latter number is the most interesting: this is the number of
+constraint variables which the grammar introduces for each node in an
+analysis, regardless of the additional constraint variables introduced
+in the principle constraint functors.
+        </ol>
+
+<h3 class="section">12.2 Profile sentence</h3>
+
+<p>Next, we want to use the second profiling operation: profile sentence. 
+Choose an input string and then <code>Extras/Profile sentence...</code>. 
+This results in an Inspector printout of an Oz tuple with six
+components:
+     <ol type=1 start=1>
+<li>The first component is a list of records corresponding to the
+nodes of the analysis, each with the features <code>entries</code>,
+<code>fd</code>, <code>fs</code>, <code>fdfs</code>, <code>index</code>, <code>pr</code> and
+<code>word</code>. Here, <code>word</code> is the word of the node, <code>index</code>
+its index, <code>entries</code> the number of possible lexical entries for
+the word, <code>fd</code>, <code>fs</code> and <code>fdfs</code> count the number of
+constraint variables introduced for the node, and <code>pr</code> the number
+of propagators. 
+<li>The second component sums up the numbers of the
+<code>fd</code>, <code>fdfs</code>, <code>fs</code> and <code>pr</code> features, gives the
+number of words at feature <code>words</code>, and the average of the
+<code>entries</code> features at feature <code>entries</code>. 
+<li>The third component gives the number of constraint variables
+and propagators introduced by the individual principle constraint
+functors. 
+<li>The fourth component gives the number of constraint variables
+and propagators introduced by the individual principle edge constraint
+functors. 
+<li>The fifth component gives the sum of the constraint variables
+and propagators introduced by the principle constraint functors and
+the edge constraint functors. 
+<li>The sixth component gives the total sum of the constraint variables
+and propagators introduced for the input string, and repeats the
+average number of lexical entries (<code>entries</code>) and the number of
+words (<code>words</code>) from the second component.
+        </ol>
+
+<h3 class="section">12.3 Integration into solving statistics</h3>
+
+<p>The profiling functionality is also integrated into the solving
+statistics which can be printed out using either <code>xdk.exe</code> or
+<code>xdks.exe</code>. Here, the grammar profile can be found at the
+<code>gprofile</code> element, the sentence profiles at the <code>sprofile</code>
+elements, and combined counts (over the list of example sentence) at
+the <code>profilecounts</code> element.
+
+<h3 class="section">12.4 What do the numbers mean?</h3>
+
+<p>The <code>entries</code> count of the number of lexical entries per word is
+easiest to interpret &mdash; if this number is too high, you should probably
+think about removing lexical ambiguity in your grammar.
+
+   <p>The counts of the constraint variables and propagators are much more
+difficult to interpret. Roughly, here, the lower the numbers the
+better, but this is only an indication: it can well be the case that a
+grammar with very low counts behaves exceptionally badly, probably
+because it does not do enough constraint propagation to reduce search.
+
+   <p>The ratio of variables and propagators is also an indicator: here, if
+there many more variables than propagators, something is wrong - in
+well programmed constraint satisfaction problems, each variable is
+constrained by a number of propagators.
+
+<!-- ************************************************************ -->
+</body></html>
+

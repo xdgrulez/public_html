@@ -1,0 +1,54 @@
+Short:        The GUI for *all* shell-based music players
+Author:       rade@coli.uni-sb.de (Ralph Debusmann)
+Uploader:     rade@coli.uni-sb.de (Ralph Debusmann)
+Type:         mus/play
+Replaces:     mus/play/EasyPlayer.lha
+
+** EasyPlayer (EYP) 1.24 (30.5.2004)
+
+  EasyPlayer (EYP) is a user-friendly GUI for shell-based music player
+  programs such as MPEGA, GMPlay or SIDPLAY. Contrary to most similar
+  GUIs, it is not tied to one particular player program. EasyPlayer is
+  *one* GUI for *all* shell-based music players that exist or that are
+  still to come.
+
+  By its concept, EasyPlayer can also be an alternative for AmigaOS 4 or
+  MorphOS: Although it is 68k, music playing is delegated to the shell
+  programs, which of course may be PPC-native.
+
+** New features in this version
+
+  * added new preferences option "Timeout" to set the timeout for
+    playing modules. Note: 1.24 cannot load prefs from older versions,
+    please create a new prefs file (it's only very few options anyway :)
+    The timeout is in seconds, and 0 means no timeout.
+
+  * playlists, preferences and interfaces now have disjoint version
+    numbers
+
+  * updated my snail mail address (postcards pretty please :)
+
+** Old features of all versions
+
+  * all-in-one: provides one GUI for all shell-based music players.
+    Already supports MPEGA, GMPlay, SIDPLAY (and PlayTHX, OctaMEDPlayer,
+    ProTracker, ModPlay, EasyMOD, Clips).
+
+  * extensible: add support for any other shell-based music player in no
+    time
+
+  * easy-to-use: intuitive, multithreaded, font-sensitive and resizable
+    GUI, online-help and extensive keyboard support
+
+  * playlist: music modules can be comfortably arranged in a playlist
+    which can be shuffled, saved, loaded, appended etc.
+
+** Requirements
+
+  * an Amiga running AmigaOS 2.04 (V37) or higher
+
+  * reqtools.library V38 or higher
+
+  * amigaguide.library V34 or higher (optional)
+
+  * some (shell-based) music player programs

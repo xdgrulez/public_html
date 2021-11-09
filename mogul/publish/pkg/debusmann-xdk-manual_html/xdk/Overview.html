@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+<title>Overview - Manual of the XDG Development Kit</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Manual of the XDG Development Kit">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="License.html#License" title="License">
+<link rel="next" href="Installation.html#Installation" title="Installation">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Overview"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Installation.html#Installation">Installation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="License.html#License">License</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">2 Overview</h2>
+
+<p>The XDG development kit (XDK) is a grammar development environment for
+the meta grammar formalism of Extensible Dependency Grammar (XDG). XDG
+is described in <cite>A Relational Syntax-Semantics Interface Based on
+Dependency Grammar</cite>. The XDK is published in <cite>The XDG Grammar
+Development Kit</cite> (<a href="References.html#References">References</a>).
+
+   <p>Still more XDG material can be found here:
+<a href="http://www.ps.uni-sb.de/~rade/xdg.html">http://www.ps.uni-sb.de/~rade/xdg.html</a>. In particular, this
+page includes pointers to slides, e.g. from the ESSLLI 2004 course by
+Ralph Debusmann and Denys Duchier:
+<a href="http://www.ps.uni-sb.de/~rade/talks.html">http://www.ps.uni-sb.de/~rade/talks.html</a>.
+
+   <p>XDG is a meta grammar formalism: it must be instantiated to yield a
+particular grammar formalism. An <em>XDG instance</em>
+<a name="index-XDG-instance-1"></a><a name="index-instance-2"></a>can have any number of <em>dimensions</em>
+<a name="index-dimension-3"></a>and on these dimensions, it can use any number of
+<em>principles</em>
+<a name="index-principle-4"></a>from a predefined principle library which stipulate the
+well-formedness conditions of an analysis. An <em>XDG grammar</em>
+<a name="index-XDG-grammar-5"></a><a name="index-grammar-6"></a>consists of two parts:
+     <ol type=1 start=1>
+<li>a specification of the used XDG instance
+<li>a lexicon
+        </ol>
+
+   <p>In the XDK, grammars are written as <em>XDK grammar files</em>. 
+<a name="index-grammar-file-7"></a>Grammar files include both 1. and 2., i.e. the specification of the
+particular XDG instance used, and a lexicon.
+
+   <p>The XDK provides the following:
+     <ul>
+<li>compilers for grammar files in various grammar file input languages
+<li>the solver for XDG
+<li>output functors to visualize the solutions of the solver
+<li>the principle compiler <em>Principle Writer</em> for automatic compilation of principles into
+Mozart/Oz constraint functors
+<li>executable programs exposing the functionality of the system:
+          <ul>
+  <li>graphical user interface (<code>xdk</code>)
+  <li>standalone grammar file compiler (<code>xdkc</code>)
+  <li>standalone grammar file converter (<code>xdkconv</code>)
+  <li>standalone solver (<code>xdks</code>)
+  </ul>
+     <li>various useful shell-scripts
+<li>a number of handcrafted example grammars
+<li>a grammar generator to generate XDG grammars from the TAG
+grammar developed in the XTAG project
+</ul>
+
+   <p>The structure of this manual is as follows. <a href="Installation.html#Installation">Installation</a>
+explains how to install the XDK. <a href="Compiler.html#Compiler">Compiler</a> explains how to write
+grammar files in one of the various grammar file input
+languages. <a href="Grammars.html#Grammars">Grammars</a> introduces the example grammars provided
+with the XDK. <a href="XTAG.html#XTAG">XTAG</a> describes the XTAG grammar generator which
+generates XDG grammars from the TAG grammar developed in the XTAG
+project. In <a href="Solver.html#Solver">Solver</a>, we explain the core of the XDK, i.e. the
+constraint-based solver.  <a href="Oracles.html#Oracles">Oracles</a> is about oracles to guide the
+search for solutions.  <a href="Outputs.html#Outputs">Outputs</a> explains the various available
+outputs.  In <a href="Programs.html#Programs">Programs</a>, we explain the executable programs
+provided by the XDK.  <a href="Debug.html#Debug">Debug</a> illustrates how XDG grammars can be
+debugged, and <a href="Profile.html#Profile">Profile</a> how they can be profiled. 
+<a href="References.html#References">References</a> contains pointers to relevant papers, and
+<a href="Concept-index.html#Concept-index">Concept index</a> is the concept index of this document.
+
+   <p>Throughout this manual, sections labeled &ldquo;developers only&rdquo; contain
+information useful only for people who wish to understand the inner
+workings of the XDK. Here, in <a href="Directories.html#Directories">Directories</a>, we describe the
+directory structure of the XDK.  In <a href="Exceptions.html#Exceptions">Exceptions</a> we specify the
+standard format for exceptions throughout the system.  In
+<a href="Variable-names.html#Variable-names">Variable names</a>, we describe the variable name conventions.
+
+<!-- ************************************************************ -->
+</body></html>
+

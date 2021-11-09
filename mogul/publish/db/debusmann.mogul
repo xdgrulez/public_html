@@ -1,0 +1,4 @@
+type:           section
+id:             mogul:/debusmann
+
+xdk: debusmann-xdk.mogul

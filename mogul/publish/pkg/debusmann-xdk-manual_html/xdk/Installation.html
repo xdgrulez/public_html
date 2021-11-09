@@ -1,0 +1,177 @@
+<html lang="en">
+<head>
+<title>Installation - Manual of the XDG Development Kit</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Manual of the XDG Development Kit">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Overview.html#Overview" title="Overview">
+<link rel="next" href="Compiler.html#Compiler" title="Compiler">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Installation"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Compiler.html#Compiler">Compiler</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Overview.html#Overview">Overview</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">3 Installation</h2>
+
+<p>The newest version of the XDK is available from the Mozart Global User
+Library (MOGUL), at URL:<br>
+<a href="http://www.mozart-oz.org/mogul/info/debusmann/xdk.html">http://www.mozart-oz.org/mogul/info/debusmann/xdk.html</a>.
+
+   <p>The XDK is written in Mozart-Oz.  The current version requires
+<em>Mozart-Oz 1.3.2</em>,
+<a name="index-Mozart_002dOz-1_002e3_002e2-8"></a><a name="index-Mozart_002dOz-9"></a><a name="index-Mozart-10"></a><a name="index-Oz-11"></a>which can be downloaded from the Mozart-Oz homepage at URL
+<a href="http://www.mozart-oz.org/">http://www.mozart-oz.org/</a>. Mozart-Oz is available for all
+popular platforms, including Windows, Linux, and MacOS X.
+
+<h3 class="section">3.1 Installing a binary release</h3>
+
+<p>To install a binary release, you need to do the following:
+     <ol type=1 start=1>
+<li>install Mozart
+<li>extract the archive
+        </ol>
+
+<h3 class="section">3.2 Installing a source release</h3>
+
+<p>To install a source release (archived in an <em>ozmake</em>
+<a name="index-ozmake-12"></a>package), you need to do the following:
+
+     <ol type=1 start=1>
+<li>install Mozart
+<li>(Windows only) install Cygwin.<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>  Select at least the packages
+containing the C/C++ compiler &ldquo;gcc&rdquo;
+<li>(Windows only, optional) install Emacs<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>
+<li>extract the XDK package into the current directory:
+<code>ozmake --extract -p debusmann-xdk.pkg</code>
+<li>change directory to the XDK: <code>cd debusmann-xdk</code>
+<li>prepare installation<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a> <code>sh scripts/prepinstall</code>
+<li>compile the XDK: <code>ozmake</code>
+        </ol>
+
+   <p>Optionally, you can now install the XDK globally (into <code>~/.oz</code>)
+by calling <code>ozmake -i</code> (first install) or <code>ozmake -U</code> (updating
+your already installed XDK).
+
+   <p>Also optionally, you can add the path to the scripts to your path
+(e.g.  in your <code>~/.bashrc</code> if you use bash). If installed
+locally, that path is <code>scripts/</code> (relative to the XDK directory),
+and if installed globally,
+<code>~/.oz/1.3.2/cache/x-ozlib/debusmann/xdk/scripts/</code>. In the latter
+case, you need to set the executable bit for the scripts:
+<pre class="example">     chmod u+x ~/.oz/1.3.2/cache/x-ozlib/debusmann/xdk/scripts/*
+</pre>
+   <h3 class="section">3.3 Using the Emacs mode for User Language files</h3>
+
+<p>We provide an Emacs mode which implements syntax highlighting for User
+Language files.
+
+<h4 class="subsection">3.3.1 Manual invocation</h4>
+
+<p>The Emacs mode can be invoked manually as follows:
+     <ol type=1 start=1>
+<li><code>M-x load-file</code> (press ALT and x, then type &ldquo;load-file&rdquo;)
+<li>select the file <code>ul.el</code> (in the XDK top directory if XDK is
+locally installed, otherwise
+<code>~/.oz/1.3.2/cache/x-ozlib/debusmann/xdk/ul.el</code>
+<li><code>M-x ul-mode</code>
+        </ol>
+
+<h4 class="subsection">3.3.2 Automatic invocation</h4>
+
+<p>The Emacs mode can be invoked automatically upon the launch of Emacs
+by adding the line:
+<pre class="example">     (load-file "&lt;path to ul.el&gt;")
+</pre>
+   <p>to your emacs configuration file (<code>~/.emacs</code>).  <code>&lt;path
+to ul.el&gt;</code> corresponds to the path to the file <code>ul.el</code>.
+
+<h3 class="section">3.4 Optional installation bits</h3>
+
+<h4 class="subsection">3.4.1 IOzSeF</h4>
+
+<p>To use Guido Tack's <em>IOzSeF</em>
+<a name="index-IOzSeF-13"></a>exploration tool instead of the <em>Explorer</em>
+<a name="index-Explorer-14"></a>for the GUI, you need to install the appropriate package available in
+MOGUL at URL
+<a href="http://www.mozart-oz.org/mogul/info/tack/iozsef.html">http://www.mozart-oz.org/mogul/info/tack/iozsef.html</a>, and also
+the package <em>TkTreeWidget</em>
+<a name="index-TkTreeWidget-15"></a>available at
+<a href="http://www.mozart-oz.org/mogul/info/tack/TkTreeWidget.html">http://www.mozart-oz.org/mogul/info/tack/TkTreeWidget.html</a>. 
+For your convenience, we have also included the two packages in the
+XDK distribution: <code>tack-iozsef-1.1.pkg</code> and
+<code>tack-TkTreeWidget-0.7.pkg</code>. To install, type:
+<pre class="example">     ozmake -i -p tack-iozsef-1.1.pkg
+     ozmake -i -p tack-TkTreeWidget-0.7.pkg
+</pre>
+   <h4 class="subsection">3.4.2 CLLS output functor</h4>
+
+<p>The CLLS output functor requires Joachim Niehren's <em>DaVinci</em>
+<a name="index-DaVinci-16"></a><a name="index-daVinci-17"></a>package from MOGUL:
+<a href="http://www.mozart-oz.org/mogul/info/niehren/davinci.html">http://www.mozart-oz.org/mogul/info/niehren/davinci.html</a>, and
+all the things this package requires in turn for itself.
+
+<h4 class="subsection">3.4.3 XTAG grammar generator</h4>
+
+<p>The XTAG grammar generator in subdirectory <code>XTAG</code> requires the
+following files in the directory <code>XTAG/Grammar</code>:
+     <ul>
+<li><code>syntax.flat</code>
+<li><code>treefams.dat</code>
+<li><code>treenames.dat</code>
+<li><code>xtag.trees.dat</code>
+</ul>
+   The files are taken from the lem parser distribution available here:
+<a href="ftp://ftp.cis.upenn.edu/pub/xtag/lem/lem-0.14.0.tgz">ftp://ftp.cis.upenn.edu/pub/xtag/lem/lem-0.14.0.tgz</a>.  Within
+the archive, the files can be found in the directory:
+<code>lem-0.14.0/data/english</code>. For best-fitting comparisons with the
+lem parser, use the preferences file: <code>xtag.prefs</code>, i.e., put it
+into its suitable directory, i.e., <code>lem-0.14.0/lib/</code>.
+
+<h4 class="subsection">3.4.4 XTAG additional functionality</h4>
+
+<p>For the additional XTAG functionality (the function <code>Compare lem
+solutions</code> in <code>xdk.exe</code> and the output functor
+<code>output.xTAGDerivation</code>), the lem parser
+(<a href="ftp://ftp.cis.upenn.edu/pub/xtag/lem/lem-0.14.0.tgz">ftp://ftp.cis.upenn.edu/pub/xtag/lem/lem-0.14.0.tgz</a>) must be
+installed and its executables must be put into the search path.
+
+<!-- ************************************************************ -->
+<div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> 
+<em>Cygwin</em> is a Linux-like environment which you can obtain at URL
+<a href="http://www.cygwin.com/">http://www.cygwin.com/</a>.</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> <em>Emacs</em> is a powerful
+editor available as an additional package at URL
+<a href="http://www.mozart-oz.org/">http://www.mozart-oz.org/</a>. It is well integrated into Mozart-Oz
+and is also very handy for using the XDK (e.g. you can use the UL
+Emacs mode).</p>
+
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> This sets the user executable bit
+for all the provided scripts.</p>
+
+   <p><hr></div>
+
+   </body></html>
+

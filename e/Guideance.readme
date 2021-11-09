@@ -1,0 +1,30 @@
+Short:    AmigaGuide-Viewer, XPK/PowerGuide-support
+Author:   rade@coli.uni-sb.de (Ralph Debusmann)
+Uploader: rade@coli.uni-sb.de (Ralph Debusmann)
+Type:     text/hyper
+
+ Just have a look at the features:
+
+   o displays (XPK-crunched) AmigaGuides
+
+   o Shell and Workbench-support
+
+   o fires up a filerequester if no filename is given
+
+   o opens either on a previously opened PublicScreen, or
+     opens an own PublicScreen
+
+   o PowerGuide-support
+ 
+
+============================= Archive contents =============================
+
+Original  Packed Ratio    Date     Time    Name
+-------- ------- ----- --------- --------  -------------
+    5668    2601 54.1% 03-Nov-96 13:53:08  Guideance
+   10454    3725 64.3% 03-Nov-96 13:53:10  Guideance.e
+    9860    3780 61.6% 03-Nov-96 13:57:12  Guideance.guide
+    2008    1545 23.0% 03-Nov-96 13:38:02  Guideance.guide.info
+    2009     629 68.6% 03-Nov-96 13:43:10  Guideance.info
+-------- ------- ----- --------- --------
+   29999   12280 59.0% 03-Nov-96 13:57:48   5 files

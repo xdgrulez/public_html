@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+<title>Constraint - Manual of the XDG Development Kit</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Manual of the XDG Development Kit">
+<meta name="generator" content="makeinfo 4.8">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Types-reference.html#Types-reference" title="Types reference">
+<link rel="prev" href="Card.html#Card" title="Card">
+<link rel="next" href="Domain.html#Domain" title="Domain">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Constraint"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="Domain.html#Domain">Domain</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Card.html#Card">Card</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Types-reference.html#Types-reference">Types reference</a>
+<hr>
+</div>
+
+<h4 class="subsection">4.9.3 Constraint</h4>
+
+<p>Constraints are useful for generic principles such as
+<code>principle.nodeconstraints</code> and <code>principle.edgeconstraints</code>.
+
+   <p>Currently, we support six constraints which are all binary, and are
+written as follows:
+     <ul>
+<li>equality: <code>equal(&lt;term_1&gt; &lt;term_2&gt;)</code>
+<li>distinctness: <code>notequal(&lt;term_1&gt; &lt;term_2&gt;)</code>
+<li>inclusion: <code>include(&lt;term_1&gt; &lt;term_2&gt;)</code>
+<li>exclusion: <code>exclude(&lt;term_1&gt; &lt;term_2&gt;)</code>
+<li>subset: <code>subseteq(&lt;term_1&gt; &lt;term_2&gt;)</code>
+<li>disjointness: <code>disjoint(&lt;term_1&gt; &lt;term_2&gt;)</code>
+<li>non-disjointness: <code>notdisjoint(&lt;term_1&gt; &lt;term_2&gt;)</code>
+</ul>
+
+<h5 class="subsubsection">4.9.3.1 Top value</h5>
+
+<p>See domain type (<a href="Domain.html#Domain">Domain</a>).
+
+<h5 class="subsubsection">4.9.3.2 Bottom value</h5>
+
+<p>See domain type (<a href="Domain.html#Domain">Domain</a>).
+
+<h5 class="subsubsection">4.9.3.3 Greatest lower bound operation</h5>
+
+<p>See domain type (<a href="Domain.html#Domain">Domain</a>).
+
+<h5 class="subsubsection">4.9.3.4 Example</h5>
+
+<p>Here is an example constraint type definition:
+
+<pre class="example">     deftype "constraint" constraint
+</pre>
+   <!-- ************************************************************ -->
+</body></html>
+
